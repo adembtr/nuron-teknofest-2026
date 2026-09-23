@@ -1,0 +1,42 @@
+{
+ "_aciklama": "FINAL-TERMAL GPS v4 (G-iki-uslu / G''), 2026-09-11. Taban: config/gps_termal_final.json (2026-09-04) + adim5_birlesik/gps_termal_v4.json. Kaynak: adim2 (G) + adim2b (kapi saglamlastirma) + adim5 stres + 6 denetim ajani + adim6 canli GPU replay; hakem karari adim5_birlesik/RAPOR.md. Dosya adi termal_kestirici.yukle_prm() tarafindan ARANIR: NURON_TERMAL_V4=0 ise gps_termal_final.json (v1 davranisi birebir), aksi halde bu dosya.",
+
+ "_v4_degisen": {
+   "xy.p0_lam": "0.1 -> 0.01 (2026 Y kuyrugu r3_t104: 5.18 -> 4.58)",
+   "z.c_lam": "true -> false (ZORUNLU: olcek duzeltmesi lam'i C kaynagina sizdirmamali; 2026 Z 3.42 -> 2.32)",
+   "z.p_k": "0.3 -> 0.0 (erken GPS olayinda Z kaynak Kalman'inin carpimsal terimi patliyor: ot4 Z 17.7-23.2 m -> 3.6-5.1 m)",
+   "dpvo.K": "2 -> 1 BELGE AMACLI. DIKKAT: bu blogu HICBIR KOD OKUMUYOR. K'nin gercek kaynagi src/task2_position/paths.py GPS_PROFILE['termal']['K'] (= NURON_TERMAL_K, varsayilan) -> paths_v4.py yamasi ya da 'export NURON_TERMAL_K=1' SART."
+ },
+ "_v4_yeni": {
+   "xy.kuyruk_*": "kalibrasyon DONMESI pencerenin son 100 karesinden (350-450); olcek/oteleme akilli pencerede kalir. kuyruk_mod ACIKCA yazilmali (kodda iki farkli varsayilan yoktu artik: v4 kodunda her yerde 'xy').",
+   "xy.rampa_*": "GPS'siz doyan olcek rampasi lam_ramp(t)=log(1+A*(1-exp(-(t-G+1)/tau))); A kalibrasyon penceresi yerel-olcek egiminden kestirilir. rampa_span >= 300 SART (200'de t bozuluyor).",
+   "xy.rampa_kapi/rampa_A_esik": "t-kapisi KALDIRILDI (canli replay tohum-1'de t=2.461 < 2.5 -> rampa kapandi -> 2026 Y 10.26 m). Yerine isaret + |A_ham|>0.03 buyukluk kapisi. rampa_T0=rampa_T1=1.0 kodsuz esdeger yedek.",
+   "xy.duzey_sizinti": "DPVO'nun duseye sizan yatay hareketini yatay adima geri kazandirir (|d'|=sqrt(|d3B|^2-dz_ref^2)); sizinti_nadir=true SART (ot4 Y 2.11 -> 3.18).",
+   "z.nadir_kural/rms_tavan": "nadir karari aci birincil (rms yalniz gevsek tavan); v1'in rms_esik=0.08'i bicak sirtiydi (2026/v4_clip5 rms 0.082 -> Z 19.6 m). aci_esik=15.0 DEGISMEDI.",
+   "z.olay_min_kare": "kalibrasyondan 150 kare gecmeden gelen GPS olayi Z kaynaklarini ve agirlik EMA'sini GUNCELLEMEZ (erken olay korumasi; ot4 erken3 23.22 -> 2.08 m)."
+ },
+ "_v4_olculen": "11 uretim pozu x 16 takvim, DUZELTILMIS GT: en kotu hucre 2.86 (2026/r3 Z), poz-en kotu 3.04, XY-en kotu 2.40, RMSE-en kotu 3.56. Tek-takvim cozunurlugunde kuyruk 4.45 (hucre) / 4.97 (tek poz).",
+
+ "dpvo": {"K": 1, "tekrar_esik": 1.5, "motion_damping": 1.0, "hedef_w": 640},
+ "xy": {"q_p": 0.1, "q_th": 0.0003, "q_lam": 0.0002, "p0_th_deg": 0.5, "p0_lam": 0.01, "lam_drift": 0.0, "r_takvim": [2.0, 1.0, 0.3], "adim_tavan": 10.0,
+        "olcek_egilimi": true, "egilim_T0": 4.0, "egilim_T1": 12.0, "egilim_doyum": 0.25, "demir": "al",
+
+        "kuyruk_donme": true, "kuyruk_n": 100, "kuyruk_mod": "xy", "kuyruk_rampa_bagli": true,
+
+        "rampa": "drift", "rampa_A": null, "rampa_tau": 100.0, "rampa_ufuk": 1.0, "rampa_span": [1000],
+        "rampa_A_min": 0.0, "rampa_A_maks": 0.07,
+        "rampa_kapi": "isaret_buyukluk", "rampa_A_esik": 0.03,
+        "rampa_T0": 1.0, "rampa_T1": 1.0, "rampa_k": 1.0,
+        "rampa_nadir": false, "rampa_mono": 0.0, "rampa_olay": "devam",
+
+        "duzey_sizinti": "fuzyon", "sizinti_nadir": true, "sizinti_pencere": 15,
+        "sizinti_kirp": [0.85, 1.25], "sizinti_yumusat": "medyan"},
+ "z": {"aci_esik": 15.0, "rms_esik": 0.08, "nadir_kural": "aci", "rms_tavan": 0.12,
+       "w_nadir": [0.1, 0.1, 0.8], "w_oblik": [0.2, 0.6, 0.2], "guc": 4.0, "taban": 0.15, "r": 0.7, "p_ab": 0.02,
+       "q_c": 0.01, "q_ab": 1e-05, "p_k": 0.0, "ema_takvim": [0.15, 0.3], "oblik_olay": {"r": 1.5, "p_ab": 0.01, "ema_takvim": [0.0]},
+       "w_min_ara": 30, "patlama_maks": 2, "olay_min_kare": 150, "dm_med": 5, "c_lam": false, "lev_n": 10,
+       "kaynaklar": ["A", "B", "C"], "kA_tip": "olcek", "kB_tip": "egim", "kB_tip_oblik": "olcek", "kC_tip": "egim"},
+ "ensemble": {"esik": 0.5, "ema": 0.02, "sanal_olcek": 50.0},
+ "koruma": {"acik": true, "artik_esik_m": 4.0, "artik_oran_esik": 0.02, "tutucu_xy": false, "s_min": 5.0, "s_max": 400.0, "yol_min_m": 30.0,
+            "adim_maks_xy": 3.0, "adim_maks_z": 1.5, "z_sapma_maks": 60.0, "tutucu_hiz_pencere": 30, "tutucu_hiz_sure": 60, "tutucu_hiz_maks": 2.0}
+}
