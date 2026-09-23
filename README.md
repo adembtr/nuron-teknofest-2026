@@ -130,15 +130,16 @@ valid GPS returned ground truth exactly.
 
 ```mermaid
 flowchart LR
-    S[Evaluation server] -->|one frame| O[Orchestrator]
-    O --> T1[Task 1<br/>detection]
-    O --> T2[Task 2<br/>position]
-    O --> T3[Task 3<br/>reference]
-    T1 --> P[Single JSON<br/>prediction]
+    S["Evaluation server"] -->|one frame| O["Orchestrator"]
+    O --> T1["Task 1 — detection"]
+    O --> T2["Task 2 — position"]
+    O --> T3["Task 3 — reference"]
+    T1 --> P["Single JSON prediction"]
     T2 --> P
     T3 --> P
     P -->|POST| S
-    T2 <-.file IPC.-> W[DPVO worker<br/>separate conda env]
+    T2 -. file IPC .-> W["DPVO worker (dpvo env)"]
+    W -. x y z d_med n rms .-> T2
 ```
 
 The server gates on the prediction: frame *n+1* is only released once frame *n* has been
