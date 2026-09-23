@@ -16,7 +16,7 @@ Three competition tasks solved on a single frame stream, on a single 8 GB GPU.
 
 *Competition session 4, complete and unedited — 2250 frames of detection, motion state,
 landing suitability, reference-object lock and dead-reckoned position on one frame stream.
-**Click to play the full 150 s recording.***
+**Click to download the full 150 s recording** (130 MB).*
 
 **[▶ All five session recordings](#all-session-recordings)** — full length, original quality, no re-encoding.
 
@@ -110,11 +110,11 @@ encoding. Hosted as release assets so cloning this repository stays cheap.
 
 | Session | Modality | Date | Size | |
 |---|---|---|---:|---|
-| **4 — best session** | RGB | 2026-09-20 | 130 MB | [▶ watch / download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session4_rgb.mp4) |
-| 1 | RGB | 2026-09-18 | 136 MB | [▶ watch / download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session1_rgb.mp4) |
-| 2 | RGB | 2026-09-19 | 123 MB | [▶ watch / download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session2_rgb.mp4) |
-| 3 | Thermal | 2026-09-19 | 60 MB | [▶ watch / download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session3_thermal.mp4) |
-| Online qualification replay | RGB | — | 262 MB | [▶ watch / download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_qualification_replay.mp4) |
+| **4 — best session** | RGB | 2026-09-20 | 130 MB | [⬇ download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session4_rgb.mp4) |
+| 1 | RGB | 2026-09-18 | 136 MB | [⬇ download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session1_rgb.mp4) |
+| 2 | RGB | 2026-09-19 | 123 MB | [⬇ download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session2_rgb.mp4) |
+| 3 | Thermal | 2026-09-19 | 60 MB | [⬇ download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session3_thermal.mp4) |
+| Online qualification replay | RGB | — | 262 MB | [⬇ download](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_qualification_replay.mp4) |
 
 </div>
 
@@ -127,8 +127,11 @@ gh release download v1.0-results --repo adembtr/nuron-teknofest-2026 --pattern '
 Trajectory plots for sessions 1–3 are in
 [`results/other_sessions/`](results/other_sessions/).
 
-> GitHub strips `<video>` tags from README files, so these are links rather than inline
-> players. Each one is the untouched original — clicking plays it in the browser.
+> **Why these are downloads and not inline players.** GitHub strips `<video>` tags from
+> README files, and its only inline-video mechanism — attachment uploads — is capped at
+> 100 MB, which four of these five exceed. Re-encoding them under the cap would mean
+> shipping a degraded copy, so the untouched originals are served as release assets
+> instead.
 
 ---
 
