@@ -12,12 +12,13 @@ Three competition tasks solved on a single frame stream, on a single 8 GB GPU.
 [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.13-3776ab?logo=python&logoColor=white)](#installation)
 [![Weights](https://img.shields.io/badge/%F0%9F%A4%97%20Weights-HuggingFace-ff9d00)](https://huggingface.co/adembtr/nuron-teknofest-2026)
 
-<video src="https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session4_rgb.mp4" poster="https://raw.githubusercontent.com/adembtr/nuron-teknofest-2026/main/assets/session4_frame.jpg" controls width="860"></video>
+[<img src="assets/session4_poster.jpg" width="860" alt="Play the full session 4 recording">](https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session4_rgb.mp4)
 
 *Competition session 4, complete and unedited — 2250 frames of detection, motion state,
-landing suitability, reference-object lock and dead-reckoned position on one frame stream.*
+landing suitability, reference-object lock and dead-reckoned position on one frame stream.
+**Click to play the full 150 s recording.***
 
-**[▶ All five session recordings](https://github.com/adembtr/nuron-teknofest-2026/releases/tag/v1.0-results)** — full length, original quality, no re-encoding.
+**[▶ All five session recordings](#all-session-recordings)** — full length, original quality, no re-encoding.
 
 </div>
 
@@ -117,29 +118,17 @@ encoding. Hosted as release assets so cloning this repository stays cheap.
 
 </div>
 
-<details>
-<summary><b>Play sessions 1, 2, 3 and the qualification replay inline</b></summary>
+Grab them all at once:
 
-**Session 1 — RGB**
-
-<video src="https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session1_rgb.mp4" controls width="820"></video>
-
-**Session 2 — RGB**
-
-<video src="https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session2_rgb.mp4" controls width="820"></video>
-
-**Session 3 — thermal**
-
-<video src="https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_session3_thermal.mp4" controls width="820"></video>
-
-**Online qualification replay**
-
-<video src="https://github.com/adembtr/nuron-teknofest-2026/releases/download/v1.0-results/nuron_qualification_replay.mp4" controls width="820"></video>
-
-</details>
+```bash
+gh release download v1.0-results --repo adembtr/nuron-teknofest-2026 --pattern '*.mp4'
+```
 
 Trajectory plots for sessions 1–3 are in
 [`results/other_sessions/`](results/other_sessions/).
+
+> GitHub strips `<video>` tags from README files, so these are links rather than inline
+> players. Each one is the untouched original — clicking plays it in the browser.
 
 ---
 
