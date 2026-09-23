@@ -1,0 +1,44 @@
+# TEKNOFEST 2026 Havacılıkta YZ — yarışma konfigürasyonu
+# Takım: NURON
+
+server:
+  # Çevrimiçi simülasyon (chat.txt). Gerçek yarışma günü http://<ip>:5000 verilir.
+  base_url: "http://<evaluation-server>:<port>/"
+  team_name: "<your_team_name>"          # .env TEAM_NAME
+  password:  "<your_password>"           # .env PASSWORD
+  session_name: "ONLINE_YARISMA_2026" # .env SESSION_NAME
+  timeout_sec: 30
+  retry: 3
+
+session:
+  total_frames: 2250        # oturum başına (değişebilir)
+  fps: 7.5
+  gt_frames: 450            # ilk 450 kare health_status=1 (kalibrasyon)
+  skip_eval_first: 10       # ilk 10 kare değerlendirilmez → null gönderilebilir
+  # modalite oturum başında sunucudan/kullanıcıdan öğrenilir: "rgb" | "termal"
+
+paths:
+  models_root: "models"     # DÜZ: tüm ağırlıklar models/ altında (rgb_/termal_ öneki; ortaklar öneksiz)
+  reference_dir: "offline_data/reference"   # oturum başı referans crop'lar buraya iner
+  log_dir: "logs"
+
+tasks:
+  task1_detection: true
+  task2_position:  true
+  task3_reference: true
+
+# Sınıf / durum kodları (şartname Tablo 2-4)
+classes:
+  0: tasit    # motion_status 0/1, landing_status -1
+  1: insan    # motion_status -1, landing_status -1
+  2: uap      # motion_status -1, landing_status 0/1
+  3: uai      # motion_status -1, landing_status 0/1
+
+landing_status:   # Tablo 3/5
+  uygun_degil: 0
+  uygun: 1
+  inis_alani_degil: -1
+motion_status:    # Tablo 4
+  hareketsiz: 0
+  hareketli: 1
+  tasit_degil: -1

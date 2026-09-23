@@ -1,0 +1,12 @@
+{
+ "_aciklama": "FINAL-TERMAL GPS parametreleri (2026-09-04). Kaynak: /home/adem/Desktop/gps/thermal_gps/work/SONUC.md (v1 kestirici + saglam ensemble). 2026 ve 2025_oturum_4 termal oturumlarinda tarandi.",
+ "dpvo": {"K": 2, "tekrar_esik": 1.5, "motion_damping": 1.0, "hedef_w": 640},
+ "xy": {"q_p": 0.1, "q_th": 0.0003, "q_lam": 0.0002, "p0_th_deg": 0.5, "p0_lam": 0.1, "lam_drift": 0.0, "r_takvim": [2.0, 1.0, 0.3], "adim_tavan": 10.0,
+        "olcek_egilimi": true, "egilim_T0": 4.0, "egilim_T1": 12.0, "egilim_doyum": 0.25, "demir": "al"},
+ "z": {"aci_esik": 15.0, "rms_esik": 0.08, "w_nadir": [0.1, 0.1, 0.8], "w_oblik": [0.2, 0.6, 0.2], "guc": 4.0, "taban": 0.15, "r": 0.7, "p_ab": 0.02,
+       "q_c": 0.01, "q_ab": 1e-05, "p_k": 0.3, "ema_takvim": [0.15, 0.3], "oblik_olay": {"r": 1.5, "p_ab": 0.01, "ema_takvim": [0.0]},
+       "w_min_ara": 30, "patlama_maks": 2, "dm_med": 5, "c_lam": true, "lev_n": 10, "kaynaklar": ["A", "B", "C"], "kA_tip": "olcek", "kB_tip": "egim", "kB_tip_oblik": "olcek", "kC_tip": "egim"},
+ "ensemble": {"esik": 0.5, "ema": 0.02, "sanal_olcek": 50.0},
+ "koruma": {"acik": true, "artik_esik_m": 4.0, "artik_oran_esik": 0.02, "tutucu_xy": false, "s_min": 5.0, "s_max": 400.0, "yol_min_m": 30.0,
+            "adim_maks_xy": 3.0, "adim_maks_z": 1.5, "z_sapma_maks": 60.0, "tutucu_hiz_pencere": 30, "tutucu_hiz_sure": 60, "tutucu_hiz_maks": 2.0}
+}

@@ -1,0 +1,45 @@
+# --- secrets: never commit ---
+connect/config/.env
+connect/config/.env.*
+!connect/config/example.env
+*.pem
+*.key
+.hf_token
+
+# --- model weights (see README "Model weights") ---
+models/**
+!models/README.md
+*.pt
+*.pth
+*.pth.tar
+*.onnx
+*.engine
+*.safetensors
+!results/**
+
+# --- run outputs ---
+kosular/
+runtime/
+logs/
+_images/
+_logs/
+offline_data/
+result/
+*.jsonl
+
+# --- third-party sources (cloned, see docs/MODELS.md) ---
+third_party/
+
+# --- python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- backups / scratch ---
+*.YEDEK*
+*.bak
+*~
+.DS_Store
